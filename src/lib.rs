@@ -45,7 +45,7 @@ pub const JackCaptureLatency: ::libc::c_uint = 0;
 pub const JackPlaybackLatency: ::libc::c_uint = 1;
 pub type jack_latency_callback_mode_t = Enum_JackLatencyCallbackMode;
 pub type JackLatencyCallback =
-    ::std::option::Option<extern "C" fn(mode: jack_latency_callback_mode_t,
+    ::std::option::Option<unsafe extern "C" fn(mode: jack_latency_callback_mode_t,
                                         arg: *mut ::libc::c_void) -> ()>;
 #[repr(C, packed)]
 #[derive(Copy)]
@@ -61,53 +61,53 @@ impl ::std::default::Default for Struct__jack_latency_range {
 }
 pub type jack_latency_range_t = Struct__jack_latency_range;
 pub type JackProcessCallback =
-    ::std::option::Option<extern "C" fn(nframes: jack_nframes_t,
+    ::std::option::Option<unsafe extern "C" fn(nframes: jack_nframes_t,
                                         arg: *mut ::libc::c_void)
                               -> ::libc::c_int>;
 pub type JackThreadCallback =
-    ::std::option::Option<extern "C" fn(arg: *mut ::libc::c_void)
+    ::std::option::Option<unsafe extern "C" fn(arg: *mut ::libc::c_void)
                               -> *mut ::libc::c_void>;
 pub type JackThreadInitCallback =
-    ::std::option::Option<extern "C" fn(arg: *mut ::libc::c_void) -> ()>;
+    ::std::option::Option<unsafe extern "C" fn(arg: *mut ::libc::c_void) -> ()>;
 pub type JackGraphOrderCallback =
-    ::std::option::Option<extern "C" fn(arg: *mut ::libc::c_void)
+    ::std::option::Option<unsafe extern "C" fn(arg: *mut ::libc::c_void)
                               -> ::libc::c_int>;
 pub type JackXRunCallback =
-    ::std::option::Option<extern "C" fn(arg: *mut ::libc::c_void)
+    ::std::option::Option<unsafe extern "C" fn(arg: *mut ::libc::c_void)
                               -> ::libc::c_int>;
 pub type JackBufferSizeCallback =
-    ::std::option::Option<extern "C" fn(nframes: jack_nframes_t,
+    ::std::option::Option<unsafe extern "C" fn(nframes: jack_nframes_t,
                                         arg: *mut ::libc::c_void)
                               -> ::libc::c_int>;
 pub type JackSampleRateCallback =
-    ::std::option::Option<extern "C" fn(nframes: jack_nframes_t,
+    ::std::option::Option<unsafe extern "C" fn(nframes: jack_nframes_t,
                                         arg: *mut ::libc::c_void)
                               -> ::libc::c_int>;
 pub type JackPortRegistrationCallback =
-    ::std::option::Option<extern "C" fn(port: jack_port_id_t,
+    ::std::option::Option<unsafe extern "C" fn(port: jack_port_id_t,
                                         arg1: ::libc::c_int,
                                         arg: *mut ::libc::c_void) -> ()>;
 pub type JackClientRegistrationCallback =
-    ::std::option::Option<extern "C" fn(name: *const ::libc::c_char,
+    ::std::option::Option<unsafe extern "C" fn(name: *const ::libc::c_char,
                                         arg1: ::libc::c_int,
                                         arg: *mut ::libc::c_void) -> ()>;
 pub type JackPortConnectCallback =
-    ::std::option::Option<extern "C" fn(a: jack_port_id_t, b: jack_port_id_t,
+    ::std::option::Option<unsafe extern "C" fn(a: jack_port_id_t, b: jack_port_id_t,
                                         connect: ::libc::c_int,
                                         arg: *mut ::libc::c_void) -> ()>;
 pub type JackPortRenameCallback =
-    ::std::option::Option<extern "C" fn(port: jack_port_id_t,
+    ::std::option::Option<unsafe extern "C" fn(port: jack_port_id_t,
                                         old_name: *const ::libc::c_char,
                                         new_name: *const ::libc::c_char,
                                         arg: *mut ::libc::c_void)
                               -> ::libc::c_int>;
 pub type JackFreewheelCallback =
-    ::std::option::Option<extern "C" fn(starting: ::libc::c_int,
+    ::std::option::Option<unsafe extern "C" fn(starting: ::libc::c_int,
                                         arg: *mut ::libc::c_void) -> ()>;
 pub type JackShutdownCallback =
-    ::std::option::Option<extern "C" fn(arg: *mut ::libc::c_void) -> ()>;
+    ::std::option::Option<unsafe extern "C" fn(arg: *mut ::libc::c_void) -> ()>;
 pub type JackInfoShutdownCallback =
-    ::std::option::Option<extern "C" fn(code: jack_status_t,
+    ::std::option::Option<unsafe extern "C" fn(code: jack_status_t,
                                         reason: *const ::libc::c_char,
                                         arg: *mut ::libc::c_void) -> ()>;
 pub type jack_default_audio_sample_t = ::libc::c_float;
@@ -164,12 +164,12 @@ impl ::std::default::Default for Struct__jack_position {
 }
 pub type jack_position_t = Struct__jack_position;
 pub type JackSyncCallback =
-    ::std::option::Option<extern "C" fn(state: jack_transport_state_t,
+    ::std::option::Option<unsafe extern "C" fn(state: jack_transport_state_t,
                                         pos: *mut jack_position_t,
                                         arg: *mut ::libc::c_void)
                               -> ::libc::c_int>;
 pub type JackTimebaseCallback =
-    ::std::option::Option<extern "C" fn(state: jack_transport_state_t,
+    ::std::option::Option<unsafe extern "C" fn(state: jack_transport_state_t,
                                         nframes: jack_nframes_t,
                                         pos: *mut jack_position_t,
                                         new_pos: ::libc::c_int,
@@ -210,7 +210,7 @@ impl ::std::default::Default for Struct_Unnamed4 {
 }
 pub type jack_transport_info_t = Struct_Unnamed4;
 pub type jack_thread_creator_t =
-    ::std::option::Option<extern "C" fn(arg1: *mut ::libc::pthread_t,
+    ::std::option::Option<unsafe extern "C" fn(arg1: *mut ::libc::pthread_t,
                                         arg2: *const ::libc::pthread_attr_t,
                                         function:
                                             ::std::option::Option<extern "C" fn(arg1:
@@ -246,7 +246,7 @@ impl ::std::default::Default for Struct__jack_session_event {
 }
 pub type jack_session_event_t = Struct__jack_session_event;
 pub type JackSessionCallback =
-    ::std::option::Option<extern "C" fn(event: *mut jack_session_event_t,
+    ::std::option::Option<unsafe extern "C" fn(event: *mut jack_session_event_t,
                                         arg: *mut ::libc::c_void) -> ()>;
 #[repr(C)]
 #[derive(Copy)]
@@ -265,7 +265,7 @@ impl ::std::default::Default for Struct_Unnamed5 {
 pub type jack_session_command_t = Struct_Unnamed5;
 pub type JSList = Struct__JSList;
 pub type JCompareFunc =
-    ::std::option::Option<extern "C" fn(a: *mut ::libc::c_void,
+    ::std::option::Option<unsafe extern "C" fn(a: *mut ::libc::c_void,
                                         b: *mut ::libc::c_void)
                               -> ::libc::c_int>;
 #[repr(C)]
@@ -369,7 +369,7 @@ pub const PropertyChanged: ::libc::c_uint = 1;
 pub const PropertyDeleted: ::libc::c_uint = 2;
 pub type jack_property_change_t = Enum_Unnamed10;
 pub type JackPropertyChangeCallback =
-    ::std::option::Option<extern "C" fn(subject: jack_uuid_t,
+    ::std::option::Option<unsafe extern "C" fn(subject: jack_uuid_t,
                                         key: *const ::libc::c_char,
                                         change: jack_property_change_t,
                                         arg: *mut ::libc::c_void) -> ()>;
@@ -420,10 +420,10 @@ impl ::std::default::Default for Struct_Unnamed12 {
 pub type jack_ringbuffer_t = Struct_Unnamed12;
 extern "C" {
     pub static mut jack_error_callback:
-               ::std::option::Option<extern "C" fn(msg: *const ::libc::c_char)
+               ::std::option::Option<unsafe extern "C" fn(msg: *const ::libc::c_char)
                                          -> ()>;
     pub static mut jack_info_callback:
-               ::std::option::Option<extern "C" fn(msg: *const ::libc::c_char)
+               ::std::option::Option<unsafe extern "C" fn(msg: *const ::libc::c_char)
                                          -> ()>;
     pub static mut JACK_METADATA_PRETTY_NAME: *const ::libc::c_char;
     pub static mut JACK_METADATA_HARDWARE: *const ::libc::c_char;
@@ -687,12 +687,12 @@ extern "C" {
                                arg1: jack_time_t) -> jack_nframes_t;
     pub fn jack_get_time() -> jack_time_t;
     pub fn jack_set_error_function(func:
-                                       ::std::option::Option<extern "C" fn(arg1:
+                                       ::std::option::Option<unsafe extern "C" fn(arg1:
                                                                                *const ::libc::c_char)
                                                                  -> ()>)
      -> ();
     pub fn jack_set_info_function(func:
-                                      ::std::option::Option<extern "C" fn(arg1:
+                                      ::std::option::Option<unsafe extern "C" fn(arg1:
                                                                               *const ::libc::c_char)
                                                                 -> ()>) -> ();
     pub fn jack_free(ptr: *mut ::libc::c_void) -> ();
@@ -708,7 +708,7 @@ extern "C" {
                                      priority: ::libc::c_int,
                                      realtime: ::libc::c_int,
                                      start_routine:
-                                         ::std::option::Option<extern "C" fn(arg1:
+                                         ::std::option::Option<unsafe extern "C" fn(arg1:
                                                                                  *mut ::libc::c_void)
                                                                    ->
                                                                        *mut ::libc::c_void>,
@@ -752,11 +752,11 @@ extern "C" {
      -> *mut jackctl_sigmask_t;
     pub fn jackctl_wait_signals(signals: *mut jackctl_sigmask_t) -> ();
     pub fn jackctl_server_create(on_device_acquire:
-                                     ::std::option::Option<extern "C" fn(device_name:
+                                     ::std::option::Option<unsafe extern "C" fn(device_name:
                                                                              *const ::libc::c_char)
                                                                -> u8>,
                                  on_device_release:
-                                     ::std::option::Option<extern "C" fn(device_name:
+                                     ::std::option::Option<unsafe extern "C" fn(device_name:
                                                                              *const ::libc::c_char)
                                                                -> ()>)
      -> *mut jackctl_server_t;
